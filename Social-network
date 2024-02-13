@@ -1,1 +1,9 @@
-#creat a new social network
+#graph class
+#node representing a member 
+#edge representing a relationship
+#method to add new member (name + any info)
+#method to add relationship b/w members
+#method to find friends of a member (list of all the friends)
+#method to find path between 2 members
+
+
