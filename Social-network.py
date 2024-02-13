@@ -1,4 +1,5 @@
 #graph class
+  print("hello world")
 
 #node representing a member 
 
