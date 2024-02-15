@@ -23,6 +23,21 @@ class Graph:
       print(self.graph[member])
   
   #method to find a path between 2 members
+#method to find a path between 2 members
+    def find_path(self, member1, member2):
+        if member1 not in self.graph or member2 not in self.graph:
+            print("One or both members not found in the network.")
+            return -1
+        visited = set()
+        queue = [(member1, 0)]  # Queue of tuples (member, distance)
+        while queue:
+            current_member, distance = queue.pop(0)
+            if current_member == member2:
+                return distance
+            visited.add(current_member)
+            for friend in self.graph[current_member]:
+                if friend not in visited:
+                    queue.append((friend, distance + 1))
 
         
 # test 
