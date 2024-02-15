@@ -23,5 +23,9 @@ class Graph:
       print(self.graph[member])
   
   #method to find a path between 2 members
+ def find_path(self, member1, member2):
+        if member1 not in self.graph or member2 not in self.graph:
+            print("One or both members not found in the network.")
+            return -1
 
 
