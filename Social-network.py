@@ -54,3 +54,11 @@ social_networks.find_friends("shahgul")
 social_networks.find_friends("sijie")
 
 # test the path thing
+member1 = "mariam"
+member2 = "sara"
+path_length = social_networks.find_path(member1, member2)
+
+if path_length != -1:
+    print(f"There are {path_length} degrees of separation between {member1} and {member2}.")
+else:
+    print(f"No path found between {member1} and {member2}.")
