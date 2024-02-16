@@ -1,5 +1,10 @@
 #here should be the class
-
+class NetworkGraph:
+   def __init__(self):
+       self.graph = {}  # adjacency list representation
+   def add_computer(self, computer):
+       if computer not in self.graph:
+           self.graph[computer] = []
        # a helper method for is fully connected method 
        def dfs(self, node, visited):
               if node not in visited:
