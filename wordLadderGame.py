@@ -11,16 +11,30 @@ with open('words_alpha.txt','r') as f:
 for i in list:
     if len(i) == 3:
         list_three.append(i)
-#find the neighbors
-def find_neighbors(base,words):
-    neighbors_list = []
-    different = 0
-    for w in words:
-        for i,j in base,w:
-            if i != j:
-                different += 1
-            if different == 2:
-                break
-        if different == 1:
-            neighbors_list.append(w)
-    return the neighbors_list
+
+class Graph:
+    
+    def __init__(self):
+        self.graph = {}
+        
+    #find the neighbors
+    def find_neighbors(base,words):
+        neighbors_list = []
+        different = 0
+        for w in words:
+            for i,j in base,w:
+                if i != j:
+                    different += 1
+                if different == 2:
+                    break
+            if different == 1:
+                neighbors_list.append(w)
+        return the neighbors_list
+        
+    def add_edge(Self, word):
+        
+        if word not in self.graph:
+            self.graph[word] = [] 
+         
+        neighbors = find_neighbors(word, words) # find neighbors of this word
+        self.graph[word] = neighbors
