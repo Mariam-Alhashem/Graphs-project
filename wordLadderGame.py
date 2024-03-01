@@ -38,3 +38,17 @@ class Graph:
          
         neighbors = find_neighbors(word, words) # find neighbors of this word
         self.graph[word] = neighbors
+    def find_path(self, word1, word2):
+       if word1 not in self.graph or word2 not in self.graph:
+           print("One or both words not found in the list.")
+           return -1
+       visited = set()
+       queue = [(word1, 0)]  # Queue of tuples (member, distance)
+       while queue:
+           current_word, distance = queue.pop(0)
+           if current_word == word2:
+               return distance
+           visited.add(current_word)
+           for neighbor in self.get_neighbors(current_word):
+               if neighbor not in visited:
+                   queue.append((neighbor, distance + 1))
