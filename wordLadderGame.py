@@ -31,13 +31,17 @@ class Graph:
                 neighbors_list.append(w)
         return the neighbors_list
         
-    def add_edge(Self, word):
+    def add_edge(self, word1, word2):
+        if word1 not in self.graph:
+            self.graph[word1] = [] 
+        if word2 not in self.graph:
+            self.graph[word2] = [] 
+        self.graph[word1].append(word2)
+        self.graph[word2].append(word1)
         
-        if word not in self.graph:
-            self.graph[word] = [] 
-         
-        neighbors = find_neighbors(word, words) # find neighbors of this word
-        self.graph[word] = neighbors
+    def get_neighbors(self, word):
+        return self.graph.get(word, [])
+        
     def find_path(self, word1, word2):
        if word1 not in self.graph or word2 not in self.graph:
            print("One or both words not found in the list.")
@@ -52,3 +56,24 @@ class Graph:
            for neighbor in self.get_neighbors(current_word):
                if neighbor not in visited:
                    queue.append((neighbor, distance + 1))
+
+def build_graph(word_list):
+    graph = Graph()
+    for a in word_list:
+        
+        for w in word_list:
+            different = 0
+            for i in range(len(w)):
+                if a[i] != w[i]:
+                    different += 1
+                if different == 2:
+                    break
+            if different == 1:
+                graph.add_edge(a,w)
+    return graph
+
+graph = build_graph(list_three)
+start_word = input('input the start word')
+end_word = input('input the end word')
+distance = graph.find_path(start_word,end_word)
+print(distance)
